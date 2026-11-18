@@ -1,0 +1,7 @@
+[package]
+name = "pier-core"
+description = "Core logic for Pier (git, worktree). No Tauri dependency."
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

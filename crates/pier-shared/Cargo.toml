@@ -1,0 +1,7 @@
+[package]
+name = "pier-shared"
+description = "Types and utilities shared across Pier crates."
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
