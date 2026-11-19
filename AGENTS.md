@@ -18,6 +18,16 @@ Rules:
 - After changing UI, run it with `webapp-testing`. Don't rely on the code merely compiling.
 - Don't use `web-artifacts-builder` for project code. It is only for HTML artifacts on claude.ai.
 
+### Frontend architecture (FSD)
+
+The frontend in `apps/src/` follows Feature-Sliced Design (FSD).
+
+- Layers, top to bottom: `app` → `pages` → `features` → `entities` → `shared`. A layer may import only from layers below it, never from the same layer or above.
+- Do not create a `widgets` layer. Compose page-level blocks directly in `pages`; reusable blocks go in `features` or `entities`.
+- Slices expose a public API through `index.ts`. Import from the slice root, not from its internal files.
+- Each slice is split into segments such as `ui`, `model`, `api`, `lib`.
+- Tauri `invoke` calls live in the `api` segment of the owning slice, or in `shared/api` if they are generic.
+
 ### Claude / MCP integration
 
 | Case | Skill |
